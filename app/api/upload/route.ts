@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
   const file = formData.get('file') as File;
   const buffer = Buffer.from(await file.arrayBuffer());
   const params = {
-    Bucket: process.env.AWS_BUCKET_NAME!,
+    Bucket: process.env.AWS_S3_BUCKET_NAME!,
     Key: `uploads/${Date.now()}-${file.name}`,
     Body: buffer,
     ContentType: file.type
